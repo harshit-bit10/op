@@ -35,7 +35,7 @@ async def upscale_with_realesrgan(input_path: str, output_path: str, is_video: b
         await progress_cb("🖼 Upscaling frames...")
         for frame in sorted(Path(temp_dir).glob("frame_*.png")):
             subprocess.run([
-                "python", f"{REALESRGAN_DIR}/inference_realesrgan.py",
+                "python3", f"{REALESRGAN_DIR}/inference_realesrgan.py",
                 "-n", MODEL_NAME,
                 "-i", str(frame),
                 "-o", str(frame)
@@ -49,7 +49,7 @@ async def upscale_with_realesrgan(input_path: str, output_path: str, is_video: b
         ], check=True)
     else:
         subprocess.run([
-            "python", f"{REALESRGAN_DIR}/inference_realesrgan.py",
+            "python3", f"{REALESRGAN_DIR}/inference_realesrgan.py",
             "-n", MODEL_NAME,
             "-i", input_path,
             "-o", output_path
